@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { savePersonalInfo } from "../redux/actions";
+import { savePersonalInfo } from "../redux/actions/user";
 
+// React Component for Step1: Personal Information
 const PersonalInformation = (props) => {
   const dispatch = useDispatch();
   const formState = useSelector((state) => state.form);
@@ -12,6 +13,7 @@ const PersonalInformation = (props) => {
 
   const { firstName, middleName, lastName, gender, email } = formState;
 
+  // Generate and return HTML for Step1: Personal Information
   return (
     <div className="container">
       <div className="row justify-content-center">

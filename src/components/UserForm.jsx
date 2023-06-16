@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  savePersonalInfo,
   saveWillLocation,
   goToPreviousStep,
   goToNextStep,
-} from "../redux/actions";
+  resetForm,
+} from "../redux/actions/user";
 import SuccessPopup from "./SuccessMessage";
 import PersonalInformation from "./PersonalInformation";
 
-const MultiStepForm = () => {
+// React component to render user details in multi step form
+const UserForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const dispatch = useDispatch();
   const formState = useSelector((state) => state.form);
@@ -27,6 +28,7 @@ const MultiStepForm = () => {
   const handleClose = () => {
     // Close the success pop-up
     setShowSuccess(false);
+    dispatch(resetForm());
   };
 
   const handleNext = () => {
@@ -42,6 +44,7 @@ const MultiStepForm = () => {
     }
   };
 
+  // Function to validate fields for Step1: Personal Information
   const validateForm = () => {
     const { firstName, middleName, lastName, email, willLocation } = formState;
     const errors = {};
@@ -71,10 +74,12 @@ const MultiStepForm = () => {
     return Object.keys(errors).length === 0;
   };
 
+  // Function to validate Email 
   const isValidEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
+  // Function to validate fields for Step2:Original Will Location
   const validateForm2 = () => {
     const { willLocation } = formState;
     const errors = {};
@@ -131,6 +136,7 @@ const MultiStepForm = () => {
     return Object.keys(errors).length === 0;
   };
 
+  // Function to generate and return HTML for Step2:Original Will Location
   const renderStepTwo = () => {
     const {
       willLocation,
@@ -345,6 +351,7 @@ const MultiStepForm = () => {
     );
   };
 
+  // Render HTML for the multi step form
   return (
     <div className="multi-step-form">
       {formState.currentStep === 1 && (
@@ -356,4 +363,4 @@ const MultiStepForm = () => {
   );
 };
 
-export default MultiStepForm;
+export default UserForm;

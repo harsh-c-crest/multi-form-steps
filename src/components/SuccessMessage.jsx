@@ -1,5 +1,6 @@
 import React from 'react';
 
+// React component to alert user on successful submission of form
 const SuccessPopup = ({ handleClose }) => {
   return (
     <div className="modal fade show" style={{ display: 'block' }}>

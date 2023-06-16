@@ -1,4 +1,4 @@
-// actions.js
+// Dispatch actions for user data
 
 export const savePersonalInfo = (personalInfo) => {
   return {
@@ -23,5 +23,11 @@ export const goToPreviousStep = () => {
 export const goToNextStep = () => {
   return {
     type: 'GO_TO_NEXT_STEP',
+  };
+};
+
+export const resetForm = () => {
+  return {
+    type: 'RESET_FORM',
   };
 };

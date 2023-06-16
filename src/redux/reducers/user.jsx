@@ -1,4 +1,4 @@
-// reducers.js
+// Reducer for managing user data in store
 
 const initialState = {
   form: {
@@ -54,6 +54,12 @@ const reducer = (state = initialState, action) => {
         form: {
           ...state.form,
           currentStep: state.form.currentStep + 1,
+        },
+      };
+    case 'RESET_FORM':
+      return {
+        form: {
+          currentStep: 1
         },
       };
     default:

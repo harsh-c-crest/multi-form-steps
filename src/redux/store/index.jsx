@@ -1,5 +1,7 @@
+// Store index to create redux store
+
 import { createStore } from "redux";
-import reducer from "./reducer";
+import reducer from "../reducers/user";
 
 const store = createStore(reducer);
 
