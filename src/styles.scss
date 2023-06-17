@@ -2,6 +2,19 @@
   font-weight: 600;
 }
 
-.radio-inline{
+.radio-inline {
   font-weight: normal !important;
+}
+
+.modal-backdrop {
+  background-color: #33333349;
+}
+
+.close {
+  border: none;
+  background: none;
+  span {
+    font-size: 20px;
+    display: block;
+  }
 }

@@ -1,71 +1,62 @@
 // Reducer for managing user data in store
 
+import { combineReducers } from "redux";
+
 const initialState = {
-  form: {
-    currentStep: 1,
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    gender: '',
-    email: '',
-    willLocation: '',
-    address1: '',
-    address2: '',
-    city: '',
-    zipcode: '',
-    state: '',
-    whereInHome: '',
-    attorneyFirstName: '',
-    attorneyLastName: '',
-    attorneyFirmName: '',
-    attorneyEmail: '',
-  },
+  currentStep: 1,
+  firstName: "",
+  middleName: "",
+  lastName: "",
+  gender: "",
+  email: "",
+  willLocation: "",
+  address1: "",
+  address2: "",
+  city: "",
+  zipcode: "",
+  state: "",
+  whereInHome: "",
+  attorneyFirstName: "",
+  attorneyLastName: "",
+  attorneyFirmName: "",
+  attorneyEmail: "",
 };
 
-const reducer = (state = initialState, action) => {
+const formReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SAVE_PERSONAL_INFO':
+    case "SAVE_PERSONAL_INFO":
       return {
         ...state,
-        form: {
-          ...state.form,
-          ...action.payload,
-        },
+        ...action.payload,
       };
-    case 'SAVE_WILL_LOCATION':
+    case "SAVE_WILL_LOCATION":
       return {
         ...state,
-        form: {
-          ...state.form,
-          ...action.payload,
-        },
+        ...action.payload,
       };
-    case 'GO_TO_PREVIOUS_STEP':
+    case "GO_TO_PREVIOUS_STEP":
       return {
         ...state,
-        form: {
-          ...state.form,
-          currentStep: state.form.currentStep - 1,
-        },
+        currentStep: state.currentStep - 1,
       };
-    case 'GO_TO_NEXT_STEP':
+    case "GO_TO_NEXT_STEP":
       return {
         ...state,
-        form: {
-          ...state.form,
-          currentStep: state.form.currentStep + 1,
-        },
+        currentStep: state.currentStep + 1,
       };
-    case 'RESET_FORM':
+    case "RESET_FORM":
       return {
-        form: {
-          currentStep: 1
-        },
+        currentStep: 1,
+        ...initialState,
       };
     default:
       return state;
   }
 };
 
+const reducer = combineReducers({
+  //form reducer to store form data
+  form: formReducer,
+});
 
 export default reducer;
